@@ -41,6 +41,10 @@ const App = () => {
     setItemState({ ...itemState, items, item: '' })
   }
 
+  // responsible for deleting item
+  itemState.handleRemoveItem = () => {
+
+  }
   return (
     <ItemContext.Provider value={itemState}>
       <Navbar />
