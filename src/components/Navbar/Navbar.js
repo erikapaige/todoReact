@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles()
-  return(
+  return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -29,7 +29,7 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-              To-Do List App
+            To-Do List App
           </Typography>
         </Toolbar>
       </AppBar>

@@ -11,23 +11,34 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import DoneIcon from '@material-ui/icons/Done'
 
+const useStyles = makeStyles(theme => ({
+  done: {
+    backgroundColor: 'green'
+  },
+  notDone: {
+    backgroundColor: 'gray'
+  }
+}))
+
 // item component
 // accepts props from FullList.js
 const Item = props => {
-  // takes props from List
+  
+  const classes = useStyles()
+  
   return (
     <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={props.text} />
-        <ListItemSecondaryAction>
-            <IconButton>
-
-            </IconButton>
-        </ListItemSecondaryAction>
+      <ListItemAvatar>
+        <Avatar className={props.item.isDone ? classes.done : classes.notDone}>
+          <DoneIcon />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={props.item.text} />
+      <ListItemSecondaryAction>
+        <IconButton edge="end" aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   )
 }
