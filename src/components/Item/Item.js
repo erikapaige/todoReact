@@ -12,6 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import DoneIcon from '@material-ui/icons/Done'
 
 // item component
+// accepts props from FullList.js
 const Item = props => {
   // takes props from List
   return (
