@@ -1,18 +1,26 @@
+// bring in react and useContext so can consume context
 import React, { useContext } from 'react'
+// bring in context folder
 import ItemContext from '../../utils/ItemContext'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 
+// component function
 const Form = () => {
   
-  // Item Context will return an object, destrutor it and pull off what need
+  // receive data from context
+  // const data = useContext(ItemContext)
+  // console.log(data)
+
+  // ItemContext (data above) will return an object, destructor it and pull off what need
   const {
     item, 
     handleInputChange,
     handleAddItem
   } = useContext(ItemContext)
   
+  // return of JSX
   return(
     <form>
       <p>
@@ -26,7 +34,11 @@ const Form = () => {
           />
       </p>
       <p>
-        <Button variant="contained" color="primary" onClick={handleAddItem}>Add Item</Button>
+        <Button 
+          variant="contained"
+          color="primary"
+          onClick={handleAddItem}>Add Item
+        </Button>
       </p>
     </form>
   )
