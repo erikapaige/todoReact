@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import ItemContext from './utils/ItemContext'
+import FullList from './components/FullList'
+import Form from './components/Form'
+import Navbar from './components/Navbar'
 
-function App() {
+const App = () => {
+
+  const [itemState, setItemState] = useState({
+    item: '',
+    items: []
+  })
+
+  itemState.handleInputChange = event => {
+    setItemState({ ...itemState, [event.target.name]: event.target.value })
+  }
+
+  itemState.handleAddItem = event => {
+    event.preventDefault()
+    let items = JSON.parse(JSON.stringify(itemState.items))
+    items.push({
+      text: itemState.item,
+      isDone: false
+    })
+    setItemState({ ...itemState, items, item: '' })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ItemContext.Provider value={itemState}>
+      <Navbar />
+      <Form />
+      <FullList />
+    </ItemContext.Provider>
+  )
 }
 
-export default App;
+export default App
