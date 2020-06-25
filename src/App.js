@@ -6,6 +6,8 @@ import ItemContext from './utils/ItemContext'
 import FullList from './components/FullList'
 import Form from './components/Form'
 import Navbar from './components/Navbar'
+// bring in elements from material-ui
+import Grid from '@material-ui/core/Grid'
 
 
 const App = () => {
@@ -42,8 +44,14 @@ const App = () => {
   return (
     <ItemContext.Provider value={itemState}>
       <Navbar />
-      <Form />
-      <FullList />
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Form />
+        </Grid>
+        <Grid item xs={6}>
+          <FullList />
+        </Grid>
+      </Grid>
     </ItemContext.Provider>
   )
 }
